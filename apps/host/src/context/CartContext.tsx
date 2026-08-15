@@ -12,6 +12,7 @@ import {
   type CartItem,
   type Product,
 } from "@ecommerce/shared";
+import { CartStorage } from "@/services/cart/CartStorage";
 
 type CartContextValue = {
   items: CartItem[];
@@ -28,25 +29,11 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
-const CART_STORAGE_KEY = "ecommerce-cart";
-
 export function CartProvider({ children }: CartProviderProps) {
-  const [items, setItems] = useState<CartItem[]>(() => {
-    const storedCart = localStorage.getItem(CART_STORAGE_KEY);
-
-    if (!storedCart) {
-      return [];
-    }
-
-    try {
-      return JSON.parse(storedCart) as CartItem[];
-    } catch {
-      return [];
-    }
-  });
+  const [items, setItems] = useState<CartItem[]>(CartStorage.get());
 
   useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+    CartStorage.save(items);
   }, [items]);
 
   const increaseQuantity = useCallback((productId: number) => {
@@ -124,9 +111,10 @@ export function CartProvider({ children }: CartProviderProps) {
     );
   }
 
-  function clearCart() {
+  const clearCart = useCallback(() => {
     setItems([]);
-  }
+    CartStorage.clear();
+  }, []);
 
   return (
     <CartContext.Provider
