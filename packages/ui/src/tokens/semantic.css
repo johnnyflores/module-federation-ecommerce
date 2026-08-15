@@ -10,9 +10,24 @@
   /* Border */
   --color-border-default: var(--color-border);
 
+  /* Borders */
+  --color-border-primary: var(--color-border);
+
   /* Actions */
   --color-action-primary: var(--color-primary);
   --color-action-primary-hover: var(--color-primary-hover);
+
+  /* Secondary action */
+  --color-action-secondary: var(--color-background-muted);
+  --color-action-secondary-hover: var(--color-border);
+
+  /* Danger action */
+  --color-action-danger: var(--color-danger);
+  --color-action-danger-hover: #b91c1c;
+
+  /* Content on colored backgrounds */
+  --color-text-on-primary: #ffffff;
+  --color-text-on-danger: #ffffff;
 
   /* Feedback */
   --color-feedback-success: var(--color-success);

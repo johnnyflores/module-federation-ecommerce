@@ -16,6 +16,8 @@ import {
 type CartContextValue = {
   items: CartItem[];
   addToCart: (product: Product) => void;
+  increaseQuantity: (productId: number) => void;
+  decreaseQuantity: (productId: number) => void;
   removeFromCart: (productId: number) => void;
   clearCart: () => void;
 };
@@ -28,6 +30,34 @@ type CartProviderProps = {
 
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
+
+  const increaseQuantity = useCallback((productId: number) => {
+    setItems((currentItems) =>
+      currentItems.map((item) =>
+        item.product.id === productId
+          ? {
+              ...item,
+              quantity: item.quantity + 1,
+            }
+          : item,
+      ),
+    );
+  }, []);
+
+  const decreaseQuantity = useCallback((productId: number) => {
+    setItems((currentItems) =>
+      currentItems
+        .map((item) =>
+          item.product.id === productId
+            ? {
+                ...item,
+                quantity: item.quantity - 1,
+              }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  }, []);
 
   const addToCart = useCallback((product: Product) => {
     setItems((currentItems) => {
@@ -85,6 +115,8 @@ export function CartProvider({ children }: CartProviderProps) {
       value={{
         items,
         addToCart,
+        increaseQuantity,
+        decreaseQuantity,
         removeFromCart,
         clearCart,
       }}

@@ -1,0 +1,40 @@
+.ui-button {
+  border: 0;
+  border-radius: var(--component-button-radius);
+  padding: var(--component-button-padding-y) var(--component-button-padding-x);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.ui-button--primary {
+  background: var(--color-action-primary);
+  color: var(--color-text-on-primary);
+}
+
+.ui-button--primary:hover {
+  background: var(--color-action-primary-hover);
+}
+
+.ui-button--secondary {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-primary);
+}
+
+.ui-button--secondary:hover {
+  background: var(--color-action-secondary-hover);
+}
+
+.ui-button--danger {
+  background: var(--color-action-danger);
+  color: var(--color-text-on-danger);
+}
+
+.ui-button--danger:hover {
+  background: var(--color-action-danger-hover);
+}
