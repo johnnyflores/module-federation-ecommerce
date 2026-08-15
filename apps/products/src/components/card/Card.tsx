@@ -1,4 +1,4 @@
-import type { Product } from "@/types/product";
+import type { Product } from "@ecommerce/shared";
 import { Button } from "@ecommerce/ui";
 import "./Card.css";
 
