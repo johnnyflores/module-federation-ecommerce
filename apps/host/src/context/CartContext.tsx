@@ -28,8 +28,26 @@ type CartProviderProps = {
   children: ReactNode;
 };
 
+const CART_STORAGE_KEY = "ecommerce-cart";
+
 export function CartProvider({ children }: CartProviderProps) {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    const storedCart = localStorage.getItem(CART_STORAGE_KEY);
+
+    if (!storedCart) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(storedCart) as CartItem[];
+    } catch {
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
+  }, [items]);
 
   const increaseQuantity = useCallback((productId: number) => {
     setItems((currentItems) =>
