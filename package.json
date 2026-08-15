@@ -1,0 +1,8 @@
+{
+  "name": "module-federation-ecommerce",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
