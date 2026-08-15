@@ -1,0 +1,48 @@
+.card {
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.card__image {
+  display: grid;
+  place-items: center;
+  height: 180px;
+  background: #f3f4f6;
+  font-size: 64px;
+}
+
+.card__content {
+  padding: 20px;
+}
+
+.card__category {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.card__name {
+  margin: 8px 0 12px;
+  font-size: 20px;
+}
+
+.card__price {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.card__button {
+  width: 100%;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.card__button:hover {
+  background: #1d4ed8;
+}
