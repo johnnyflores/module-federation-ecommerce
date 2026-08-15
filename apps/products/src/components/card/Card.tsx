@@ -16,7 +16,9 @@ function Card({ product }: CardProps) {
         <strong className="card__price">
           ${product.price.toLocaleString()}
         </strong>
-        <Button type="button">Add to cart</Button>
+        <Button type="button" className="card__button">
+          Add to cart
+        </Button>
       </div>
     </article>
   );

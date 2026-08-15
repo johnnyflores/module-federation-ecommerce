@@ -1,0 +1,30 @@
+:root {
+  /* Text */
+  --color-text-primary: var(--color-text);
+  --color-text-secondary: var(--color-text-muted);
+
+  /* Surface */
+  --color-surface-primary: var(--color-background);
+  --color-surface-secondary: var(--color-background-muted);
+
+  /* Border */
+  --color-border-default: var(--color-border);
+
+  /* Actions */
+  --color-action-primary: var(--color-primary);
+  --color-action-primary-hover: var(--color-primary-hover);
+
+  /* Feedback */
+  --color-feedback-success: var(--color-success);
+  --color-feedback-danger: var(--color-danger);
+
+  /* Component spacing */
+  --component-button-padding-y: var(--spacing-3);
+  --component-button-padding-x: var(--spacing-4);
+
+  --component-card-padding: var(--spacing-5);
+  --component-card-gap: var(--spacing-4);
+
+  --component-button-radius: var(--radius-md);
+  --component-card-radius: var(--radius-lg);
+}
