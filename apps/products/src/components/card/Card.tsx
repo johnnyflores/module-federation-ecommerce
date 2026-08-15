@@ -1,5 +1,6 @@
 import type { Product } from "@ecommerce/shared";
 import { Button } from "@ecommerce/ui";
+import { CART_ADD_EVENT, type CartAddEventDetail } from "@ecommerce/shared";
 import "./Card.css";
 
 type CardProps = {
@@ -7,6 +8,17 @@ type CardProps = {
 };
 
 function Card({ product }: CardProps) {
+  function handleAddToCart() {
+    const detail: CartAddEventDetail = {
+      product,
+    };
+
+    window.dispatchEvent(
+      new CustomEvent(CART_ADD_EVENT, {
+        detail,
+      }),
+    );
+  }
   return (
     <article className="card">
       <div className="card__image">{product.emoji}</div>
@@ -16,7 +28,11 @@ function Card({ product }: CardProps) {
         <strong className="card__price">
           ${product.price.toLocaleString()}
         </strong>
-        <Button type="button" className="card__button">
+        <Button
+          type="button"
+          className="card__button"
+          onClick={handleAddToCart}
+        >
           Add to cart
         </Button>
       </div>

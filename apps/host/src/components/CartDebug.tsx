@@ -5,7 +5,23 @@ function CartDebug() {
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
-  return <div>Cart items: {totalItems}</div>;
+  return (
+    <aside>
+      <h2>Cart</h2>
+
+      <p>Items: {totalItems}</p>
+
+      {items.map((item) => (
+        <div key={item.product.id}>
+          <span>
+            {item.product.emoji} {item.product.name}
+          </span>
+
+          <span> × {item.quantity}</span>
+        </div>
+      ))}
+    </aside>
+  );
 }
 
 export default CartDebug;

@@ -1,4 +1,5 @@
 import { Suspense, lazy } from "react";
+import CartDebug from "@/components/CartDebug";
 
 const Products = lazy(() => import("products/Products"));
 
@@ -9,6 +10,7 @@ function App() {
 
       <Suspense fallback={<p>Loading Products...</p>}>
         <Products />
+        <CartDebug />
       </Suspense>
     </div>
   );

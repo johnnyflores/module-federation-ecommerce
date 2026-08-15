@@ -1,6 +1,17 @@
-import { createContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+  type ReactNode,
+} from "react";
 
-import type { CartItem, Product } from "@ecommerce/shared";
+import {
+  CART_ADD_EVENT,
+  type CartAddEventDetail,
+  type CartItem,
+  type Product,
+} from "@ecommerce/shared";
 
 type CartContextValue = {
   items: CartItem[];
@@ -18,7 +29,7 @@ type CartProviderProps = {
 export function CartProvider({ children }: CartProviderProps) {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  function addToCart(product: Product) {
+  const addToCart = useCallback((product: Product) => {
     setItems((currentItems) => {
       const existingItem = currentItems.find(
         (item) => item.product.id === product.id,
@@ -43,7 +54,21 @@ export function CartProvider({ children }: CartProviderProps) {
         },
       ];
     });
-  }
+  }, []);
+
+  useEffect(() => {
+    function handleCartAdd(event: Event) {
+      const customEvent = event as CustomEvent<CartAddEventDetail>;
+
+      addToCart(customEvent.detail.product);
+    }
+
+    window.addEventListener(CART_ADD_EVENT, handleCartAdd);
+
+    return () => {
+      window.removeEventListener(CART_ADD_EVENT, handleCartAdd);
+    };
+  }, [addToCart]);
 
   function removeFromCart(productId: number) {
     setItems((currentItems) =>
