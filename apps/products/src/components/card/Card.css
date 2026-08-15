@@ -1,19 +1,30 @@
 .card {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+
   border: 1px solid #e5e7eb;
   border-radius: 12px;
+
   background: #ffffff;
 }
 
 .card__image {
   display: grid;
   place-items: center;
-  height: 180px;
+
+  min-height: 180px;
+
   background: #f3f4f6;
+
   font-size: 64px;
 }
 
 .card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
   padding: 20px;
 }
 
@@ -23,16 +34,16 @@
 }
 
 .card__name {
-  margin: 8px 0 12px;
+  margin: 0;
+
   font-size: 20px;
 }
 
 .card__price {
-  display: block;
-  margin-bottom: 16px;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .card__button {
   width: 100%;
+  margin-top: 8px;
 }
