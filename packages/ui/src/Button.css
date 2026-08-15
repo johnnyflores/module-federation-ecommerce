@@ -1,0 +1,15 @@
+.ui-button {
+  padding: var(--spacing-3) var(--spacing-4);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: var(--color-background);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+}
+
+.ui-button:hover {
+  background: var(--color-primary-hover);
+}
