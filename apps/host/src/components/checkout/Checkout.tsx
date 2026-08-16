@@ -6,9 +6,15 @@ type CheckoutProps = {
   checkout: CheckoutData;
   onBack: () => void;
   onConfirm: () => void;
+  isSubmitting: boolean;
 };
 
-function Checkout({ checkout, onBack, onConfirm }: CheckoutProps) {
+function Checkout({
+  checkout,
+  onBack,
+  onConfirm,
+  isSubmitting,
+}: CheckoutProps) {
   const totalItems = checkout.items.reduce(
     (total, item) => total + item.quantity,
     0,
@@ -20,20 +26,16 @@ function Checkout({ checkout, onBack, onConfirm }: CheckoutProps) {
         <Button type="button" variant="secondary" onClick={onBack}>
           ← Back to cart
         </Button>
-
         <h1 className="checkout__title">Checkout</h1>
       </div>
-
       <section
         className="checkout__summary"
         aria-labelledby="checkout-summary-title"
       >
         <h2 id="checkout-summary-title">Order summary</h2>
-
         <p className="checkout__count">
           {totalItems} {totalItems === 1 ? "item" : "items"}
         </p>
-
         <div className="checkout__items">
           {checkout.items.map((item) => (
             <article className="checkout__item" key={item.product.id}>
@@ -51,15 +53,17 @@ function Checkout({ checkout, onBack, onConfirm }: CheckoutProps) {
             </article>
           ))}
         </div>
-
         <div className="checkout__total">
           <strong>Total</strong>
-
           <strong>${checkout.subtotal.toFixed(2)}</strong>
         </div>
-
-        <Button type="button" className="checkout__confirm" onClick={onConfirm}>
-          Confirm checkout
+        <Button
+          type="button"
+          className="checkout__confirm"
+          onClick={onConfirm}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Processing..." : "Confirm checkout"}
         </Button>
       </section>
     </main>
