@@ -1,0 +1,25 @@
+.cart-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+}
+
+.cart-badge__count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--color-action-danger);
+  color: var(--color-text-on-danger);
+  font-size: 11px;
+  font-weight: 700;
+}
