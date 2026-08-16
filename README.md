@@ -149,16 +149,22 @@ npm install
 Start the remote product catalog first, then the host app in a second terminal.
 
 ```bash
-npm run dev --workspace products
-```
-
-```bash
-npm run dev --workspace host
+cd module-federation-ecommerce/apps/products
+npm run build
+npm run preview
 ```
 
 The apps run on these local ports:
 
 - `products`: http://localhost:4173
+
+```bash
+cd module-federation-ecommerce/apps/host
+npm run dev
+```
+
+The apps run on these local ports:
+
 - `host`: http://localhost:5173
 
 ## Build
