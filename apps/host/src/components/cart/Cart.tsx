@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { useCart } from "@/context/useCart";
 import "./Cart.css";
 import { Button } from "@ecommerce/ui";
@@ -16,9 +17,38 @@ function Cart({ isOpen, onClose }: CartProps) {
     clearCart,
   } = useCart();
 
-  if (!isOpen) {
-    return null;
-  }
+  const panelRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const previousActiveElement = document.activeElement as HTMLElement | null;
+
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+
+      document.removeEventListener("keydown", handleKeyDown);
+
+      previousActiveElement?.focus();
+    };
+  }, [isOpen, onClose]);
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
@@ -27,22 +57,36 @@ function Cart({ isOpen, onClose }: CartProps) {
     0,
   );
 
+  if (!isOpen) {
+    return null;
+  }
+
   return (
     <div className="cart-drawer">
       <div
         className="cart-drawer__backdrop"
         onClick={onClose}
         aria-hidden="true"
+        role="presentation"
       />
-      <aside className="cart-drawer__panel" aria-label="Shopping cart">
+      <aside
+        ref={panelRef}
+        className="cart-drawer__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-drawer-title"
+      >
         <div className="cart-drawer__header">
           <div>
-            <h2 className="cart-drawer__title">Cart</h2>
+            <h2 id="cart-drawer-title" className="cart-drawer__title">
+              Cart
+            </h2>
             <span className="cart__count">
               {totalItems} {totalItems === 1 ? "item" : "items"}
             </span>
           </div>
           <Button
+            ref={closeButtonRef}
             type="button"
             variant="secondary"
             onClick={onClose}

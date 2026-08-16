@@ -1,10 +1,11 @@
-import type { ButtonHTMLAttributes } from "react";
+import type { ButtonHTMLAttributes, Ref } from "react";
 import "./Button.css";
 
 type ButtonVariant = "primary" | "secondary" | "danger";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant;
+  ref?: Ref<HTMLButtonElement>;
 };
 
 export function Button({
