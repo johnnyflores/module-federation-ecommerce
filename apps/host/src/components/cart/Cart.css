@@ -138,3 +138,14 @@
     animation: none;
   }
 }
+
+.cart__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.cart__actions button {
+  width: 100%;
+}

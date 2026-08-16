@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useCart } from "@/context/useCart";
 import "./Cart.css";
 import { Button } from "@ecommerce/ui";
+import { validateCart } from "@ecommerce/shared";
 
 type CartProps = {
   isOpen: boolean;
@@ -95,6 +96,17 @@ function Cart({ isOpen, onClose }: CartProps) {
     return null;
   }
 
+  const handleCheckout = () => {
+    const result = validateCart(items);
+
+    if (!result.valid) {
+      console.error("Cart validation failed", result.errors);
+      return;
+    }
+
+    console.log("Cart is ready for checkout");
+  };
+
   return (
     <div className="cart-drawer">
       <div
@@ -176,14 +188,19 @@ function Cart({ isOpen, onClose }: CartProps) {
               <strong>Total</strong>
               <strong>${totalPrice.toFixed(2)}</strong>
             </div>
-            <Button
-              type="button"
-              variant="secondary"
-              className="cart__clear"
-              onClick={clearCart}
-            >
-              Clear cart
-            </Button>
+            <div className="cart__actions">
+              <Button type="button" onClick={handleCheckout}>
+                Checkout
+              </Button>
+              <Button
+                type="button"
+                variant="secondary"
+                className="cart__clear"
+                onClick={clearCart}
+              >
+                Clear cart
+              </Button>
+            </div>
           </div>
         )}
       </aside>
