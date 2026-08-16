@@ -1,15 +1,25 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useCart } from "@/context/useCart";
-import "./Cart.css";
+import {
+  validateCart,
+  type CartValidationError,
+  type CartItem,
+} from "@ecommerce/shared";
 import { Button } from "@ecommerce/ui";
-import { validateCart } from "@ecommerce/shared";
+import "./Cart.css";
 
 type CartProps = {
   isOpen: boolean;
   onClose: () => void;
+  onCheckout?: (items: CartItem[]) => void;
 };
 
-function Cart({ isOpen, onClose }: CartProps) {
+function Cart({ isOpen, onClose, onCheckout }: CartProps) {
+  const [validationErrors, setValidationErrors] = useState<
+    CartValidationError[]
+  >([]);
+  const panelRef = useRef<HTMLElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {
     items,
     increaseQuantity,
@@ -17,9 +27,6 @@ function Cart({ isOpen, onClose }: CartProps) {
     removeFromCart,
     clearCart,
   } = useCart();
-
-  const panelRef = useRef<HTMLElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!isOpen) {
@@ -99,12 +106,34 @@ function Cart({ isOpen, onClose }: CartProps) {
   const handleCheckout = () => {
     const result = validateCart(items);
 
+    setValidationErrors(result.errors);
+
     if (!result.valid) {
       console.error("Cart validation failed", result.errors);
       return;
     }
 
-    console.log("Cart is ready for checkout");
+    onCheckout?.(items);
+  };
+
+  const handleIncreaseQuantity = (productId: number) => {
+    setValidationErrors([]);
+    increaseQuantity(productId);
+  };
+
+  const handleDecreaseQuantity = (productId: number) => {
+    setValidationErrors([]);
+    decreaseQuantity(productId);
+  };
+
+  const handleRemoveFromCart = (productId: number) => {
+    setValidationErrors([]);
+    removeFromCart(productId);
+  };
+
+  const handleClearCart = () => {
+    setValidationErrors([]);
+    clearCart();
   };
 
   return (
@@ -155,7 +184,7 @@ function Cart({ isOpen, onClose }: CartProps) {
                     <Button
                       type="button"
                       variant="secondary"
-                      onClick={() => decreaseQuantity(item.product.id)}
+                      onClick={() => handleDecreaseQuantity(item.product.id)}
                       aria-label={`Decrease ${item.product.name} quantity`}
                     >
                       -
@@ -164,7 +193,7 @@ function Cart({ isOpen, onClose }: CartProps) {
                     <Button
                       type="button"
                       variant="secondary"
-                      onClick={() => increaseQuantity(item.product.id)}
+                      onClick={() => handleIncreaseQuantity(item.product.id)}
                       aria-label={`Increase ${item.product.name} quantity`}
                     >
                       +
@@ -174,7 +203,7 @@ function Cart({ isOpen, onClose }: CartProps) {
                 <Button
                   type="button"
                   variant="danger"
-                  onClick={() => removeFromCart(item.product.id)}
+                  onClick={() => handleRemoveFromCart(item.product.id)}
                 >
                   Remove
                 </Button>
@@ -188,6 +217,18 @@ function Cart({ isOpen, onClose }: CartProps) {
               <strong>Total</strong>
               <strong>${totalPrice.toFixed(2)}</strong>
             </div>
+            {validationErrors.length > 0 && (
+              <div className="cart__validation" role="alert">
+                <strong>Please fix the following:</strong>
+                <ul>
+                  {validationErrors.map((error) => (
+                    <li key={`${error.productId}-${error.code}`}>
+                      {error.message}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div className="cart__actions">
               <Button type="button" onClick={handleCheckout}>
                 Checkout
@@ -195,8 +236,7 @@ function Cart({ isOpen, onClose }: CartProps) {
               <Button
                 type="button"
                 variant="secondary"
-                className="cart__clear"
-                onClick={clearCart}
+                onClick={handleClearCart}
               >
                 Clear cart
               </Button>
