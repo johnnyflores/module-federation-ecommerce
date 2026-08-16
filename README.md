@@ -192,6 +192,32 @@ This allows local packages such as:
 @ecommerce/shared
 ```
 
+## Module Federation
+
+The project uses Module Federation to expose the Products application to the Host.
+
+Conceptually:
+
+```text
+Host
+ │
+ └── products/Products
+          │
+          ▼
+      Products Remote
+
+```
+
+The Host loads the remote lazily:
+
+```TypeScript
+const Products = lazy(
+  () => import("products/Products"),
+);
+```
+
+This allows the Products application to remain an independently developed application.
+
 ## How It Works
 
 The host loads the remote catalog from the products app via module federation. The catalog drives browsing, while the host owns the cart, checkout, and order confirmation flow.
