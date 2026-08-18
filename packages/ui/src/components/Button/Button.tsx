@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, Ref } from "react";
-import "./Button.css";
+import "./Button.scss";
 
 type ButtonVariant = "primary" | "secondary" | "danger";
 
