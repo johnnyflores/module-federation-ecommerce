@@ -9,6 +9,6 @@
     "dev:host": "npm run dev -w host",
     "dev:products": "npm run dev -w products",
     "build": "npm run build -w products && npm run build -w host",
-    "lint": "npm run lint --workspaces"
+    "lint": "npm run lint --workspaces --if-present"
   }
 }
