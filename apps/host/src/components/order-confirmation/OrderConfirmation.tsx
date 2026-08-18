@@ -1,6 +1,6 @@
 import { Button } from "@ecommerce/ui";
 import type { Order } from "@/types/order";
-import "./OrderConfirmation.css";
+import "./OrderConfirmation.scss";
 
 type OrderConfirmationProps = {
   order: Order;

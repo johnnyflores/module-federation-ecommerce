@@ -1,6 +1,6 @@
 import { useCart } from "@/context/useCart";
 import { ShoppingCart } from "lucide-react";
-import "./CartBadge.css";
+import "./CartBadge.scss";
 
 type CartBadgeProps = {
   onClick: () => void;

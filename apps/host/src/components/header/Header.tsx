@@ -1,5 +1,5 @@
 import CartBadge from "@/components/cart/CartBadge";
-import "./Header.css";
+import "./Header.scss";
 
 type HeaderProps = {
   onCartClick: () => void;

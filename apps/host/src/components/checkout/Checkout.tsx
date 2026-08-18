@@ -1,6 +1,6 @@
 import type { CheckoutData } from "@/types/checkout";
 import { Button } from "@ecommerce/ui";
-import "./Checkout.css";
+import "./Checkout.scss";
 
 type CheckoutProps = {
   checkout: CheckoutData;

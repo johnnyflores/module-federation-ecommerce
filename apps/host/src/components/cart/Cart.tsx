@@ -8,7 +8,7 @@ import {
   type CartItem,
 } from "@ecommerce/shared";
 import { Button } from "@ecommerce/ui";
-import "./Cart.css";
+import "./Cart.scss";
 
 type CartProps = {
   isOpen: boolean;
