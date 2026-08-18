@@ -1,6 +1,6 @@
 import { products } from "@/data/products";
 import Card from "@/components/card/Card";
-import "./ProductCatalog.css";
+import "./ProductCatalog.scss";
 
 function ProductCatalog() {
   return (

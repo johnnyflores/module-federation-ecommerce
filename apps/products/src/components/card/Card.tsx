@@ -1,7 +1,7 @@
 import type { Product } from "@ecommerce/shared";
 import { Button } from "@ecommerce/ui";
 import { CART_ADD_EVENT, type CartAddEventDetail } from "@ecommerce/shared";
-import "./Card.css";
+import "./Card.scss";
 
 type CardProps = {
   product: Product;
