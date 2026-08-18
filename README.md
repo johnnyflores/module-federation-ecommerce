@@ -133,7 +133,7 @@ The UI package uses design tokens instead of hard-coded colors throughout the ap
 
 ## Requirements
 
-- Node.js 20 or newer
+- Node.js 22.20.0 or newer
 - npm
 
 ## Installation
@@ -146,38 +146,70 @@ npm install
 
 ## Running the apps
 
-Start the remote product catalog first, then the host app in a second terminal.
+Use two terminals from the repository root.
+
+### Terminal 1 — products remote
 
 ```bash
-cd module-federation-ecommerce/apps/products
-npm run build
-npm run preview
+npm run preview:products
 ```
 
-The apps run on these local ports:
+The remote app preview runs on:
 
 - `products`: http://localhost:4173
 
+### Terminal 2 — host app
+
 ```bash
-cd module-federation-ecommerce/apps/host
-npm run dev
+npm run dev:host
 ```
 
-The apps run on these local ports:
+The host app runs on:
 
 - `host`: http://localhost:5173
 
+## Environment configuration
+
+The host app loads the products remote URL from environment files.
+
+- Local development: `.env.development`
+- Production: `.env.production`
+
+Example local value:
+
+```env
+VITE_PRODUCTS_REMOTE_URL=http://localhost:4173/assets/remoteEntry.js
+```
+
+Example production value:
+
+```env
+VITE_PRODUCTS_REMOTE_URL=https://my-domaine.com/products/assets/remoteEntry.js
+```
+
 ## Build
 
-Build into root app module-federation-ecommerce/:
+Build both workspaces from the repository root:
 
 ```bash
-npm run build --workspace=products
+npm run build
 ```
 
+For production mode with the production environment values:
+
 ```bash
-npm run build --workspace=host
+npm run build:prod
 ```
+
+## Lint
+
+Lint all workspaces that define a lint script:
+
+```bash
+npm run lint
+```
+
+The root script uses `--if-present` so packages without a custom lint command are skipped automatically.
 
 ## Workspaces
 
@@ -246,8 +278,9 @@ Key flows:
 
 ## Notes
 
-- The host expects the products remote to be available at `http://localhost:4173/assets/remoteEntry.js`.
-- If you change the remote port or filename, update the host Vite federation config accordingly.
+- The host expects the products remote to be available at `http://localhost:4173/assets/remoteEntry.js` in local development.
+- In production, update `VITE_PRODUCTS_REMOTE_URL` in `.env.production` to match the deployed remote entry URL.
+- If you change the remote port or filename, update the host Vite federation config and the environment values accordingly.
 
 ## Future Improvements
 

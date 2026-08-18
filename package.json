@@ -8,7 +8,10 @@
   "scripts": {
     "dev:host": "npm run dev -w host",
     "dev:products": "npm run dev -w products",
+    "preview:products": "npm run preview -w products",
+    "preview:host": "npm run preview -w host",
     "build": "npm run build -w products && npm run build -w host",
+    "build:prod": "npm run build -w products -- --mode production && npm run build -w host -- --mode production",
     "lint": "npm run lint --workspaces --if-present"
   }
 }
