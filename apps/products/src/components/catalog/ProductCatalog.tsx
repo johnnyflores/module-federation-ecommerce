@@ -7,12 +7,10 @@ function ProductCatalog() {
     <section className="product-catalog">
       <div className="product-catalog__header">
         <h1 className="product-catalog__title">Product Catalog</h1>
-
         <p className="product-catalog__description">
           Explore our latest products.
         </p>
       </div>
-
       <div className="product-catalog__grid">
         {products.map((product) => (
           <Card key={product.id} product={product} />

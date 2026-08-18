@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from "react";
+import { X, Plus, Minus } from "lucide-react";
+
 import { useCart } from "@/context/useCart";
 import {
   validateCart,
@@ -167,7 +169,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
             onClick={onClose}
             aria-label="Close cart"
           >
-            ×
+            <X size={16} aria-hidden="true" />
           </Button>
         </div>
         <div className="cart__items">
@@ -187,7 +189,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
                       onClick={() => handleDecreaseQuantity(item.product.id)}
                       aria-label={`Decrease ${item.product.name} quantity`}
                     >
-                      -
+                      <Minus size={16} aria-hidden="true" />
                     </Button>
                     <span>{item.quantity}</span>
                     <Button
@@ -196,7 +198,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
                       onClick={() => handleIncreaseQuantity(item.product.id)}
                       aria-label={`Increase ${item.product.name} quantity`}
                     >
-                      +
+                      <Plus size={16} aria-hidden="true" />
                     </Button>
                   </div>
                 </div>

@@ -25,7 +25,7 @@
 .cart-badge__count {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -10px;
   display: grid;
   place-items: center;
   min-width: 20px;
