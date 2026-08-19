@@ -178,7 +178,7 @@ The host app loads the products remote URL from environment files.
 Example local value:
 
 ```env
-VITE_PRODUCTS_REMOTE_URL=http://localhost:4173/assets/remoteEntry.js
+VITE_PRODUCTS_LOCAL_URL=http://localhost:4173/assets/remoteEntry.js
 ```
 
 Example production value:

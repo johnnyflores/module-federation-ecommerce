@@ -5,9 +5,10 @@ import path from "path";
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
-  const productsRemoteUrl =
-    env.VITE_PRODUCTS_REMOTE_URL ??
-    "http://localhost:4173/assets/remoteEntry.js";
+  const isProduction = mode === "production";
+  const productsRemoteUrl = isProduction
+    ? env.VITE_PRODUCTS_REMOTE_URL
+    : env.VITE_PRODUCTS_LOCAL_URL;
 
   return {
     plugins: [
