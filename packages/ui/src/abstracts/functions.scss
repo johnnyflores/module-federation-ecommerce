@@ -1,0 +1,27 @@
+@use "sass:math";
+
+$base-font-size: 16px;
+
+@function strip-units($value) {
+  @return math.div($value, ($value * 0 + 1));
+}
+
+@function rem($px-value, $base: $base-font-size) {
+  @if not math.is-unitless($px-value) {
+    $px-value: strip-units($px-value);
+  }
+
+  @if not math.is-unitless($base) {
+    $base: strip-units($base);
+  }
+
+  @return math.div($px-value, $base) * 1rem;
+}
+
+@function color($color-name) {
+  @return var(--color-#{$color-name});
+}
+
+@function fontweight($fontweight) {
+  @return var(--font-weight-#{$fontweight});
+}

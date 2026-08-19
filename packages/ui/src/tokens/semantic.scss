@@ -23,23 +23,13 @@
 
   /* Danger action */
   --color-action-danger: var(--color-danger);
-  --color-action-danger-hover: #b91c1c;
+  --color-action-danger-hover: var(--color-danger-hover);
 
   /* Content on colored backgrounds */
-  --color-text-on-primary: #ffffff;
-  --color-text-on-danger: #ffffff;
+  --color-text-on-primary: var(--color-white);
+  --color-text-on-danger: var(--color-white);
 
   /* Feedback */
   --color-feedback-success: var(--color-success);
   --color-feedback-danger: var(--color-danger);
-
-  /* Component spacing */
-  --component-button-padding-y: var(--spacing-3);
-  --component-button-padding-x: var(--spacing-4);
-
-  --component-card-padding: var(--spacing-5);
-  --component-card-gap: var(--spacing-4);
-
-  --component-button-radius: var(--radius-md);
-  --component-card-radius: var(--radius-lg);
 }
