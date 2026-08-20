@@ -15,3 +15,6 @@ export type { DrawerContentProps } from "./components/drawer/DrawerContent";
 
 export { DrawerFooter } from "./components/drawer/DrawerFooter";
 export type { DrawerFooterProps } from "./components/drawer/DrawerFooter";
+
+export { Badge } from "./components/badge/Badge";
+export type { BadgeProps } from "./components/badge/Badge";

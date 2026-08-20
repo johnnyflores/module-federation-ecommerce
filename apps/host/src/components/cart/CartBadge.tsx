@@ -1,5 +1,6 @@
 import { useCart } from "@/context/useCart";
 import { ShoppingCart } from "lucide-react";
+import { Badge } from "@ecommerce/ui";
 import "./CartBadge.scss";
 
 type CartBadgeProps = {
@@ -20,13 +21,9 @@ function CartBadge({ onClick }: CartBadgeProps) {
         totalItems === 1 ? "item" : "items"
       }`}
     >
-      <span aria-hidden="true">
+      <Badge content={totalItems > 0 ? totalItems : undefined}>
         <ShoppingCart aria-hidden="true" size={24} />
-      </span>
-
-      {totalItems > 0 && (
-        <span className="cart-badge__count">{totalItems}</span>
-      )}
+      </Badge>
     </button>
   );
 }

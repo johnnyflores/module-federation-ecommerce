@@ -8,31 +8,13 @@
     height: 40px;
     padding: 0;
     border: 0;
-    border-radius: 8px;
     background: transparent;
-    font-size: 22px;
-    cursor: pointer;
     &:hover {
       background: var(--color-background-muted);
     }
     &:focus-visible {
       outline: 2px solid var(--color-primary);
       outline-offset: 2px;
-    }
-    &__count {
-      position: absolute;
-      top: 0;
-      right: -10px;
-      display: grid;
-      place-items: center;
-      min-width: 20px;
-      height: 20px;
-      padding: 0 4px;
-      border-radius: 999px;
-      background: var(--color-action-danger);
-      color: var(--color-text-on-danger);
-      font-size: 11px;
-      font-weight: 700;
     }
   }
 }
