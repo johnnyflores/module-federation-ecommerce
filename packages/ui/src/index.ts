@@ -1,5 +1,5 @@
-export { Button } from "./components/Button/Button";
-export type { ButtonProps } from "./components/Button/Button";
+export { Button } from "./components/button/Button";
+export type { ButtonProps } from "./components/button/Button";
 
 export { Drawer } from "./components/drawer/Drawer";
 export type { DrawerProps } from "./components/drawer/Drawer";
