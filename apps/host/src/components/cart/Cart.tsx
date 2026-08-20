@@ -1,13 +1,19 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { X, Plus, Minus } from "lucide-react";
-
 import { useCart } from "@/context/useCart";
 import {
   validateCart,
   type CartValidationError,
   type CartItem,
 } from "@ecommerce/shared";
-import { Button } from "@ecommerce/ui";
+import {
+  Button,
+  Drawer,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerContent,
+  DrawerFooter,
+} from "@ecommerce/ui";
 import "./Cart.scss";
 
 type CartProps = {
@@ -20,8 +26,6 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
   const [validationErrors, setValidationErrors] = useState<
     CartValidationError[]
   >([]);
-  const panelRef = useRef<HTMLElement>(null);
-  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {
     items,
     increaseQuantity,
@@ -29,70 +33,6 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
     removeFromCart,
     clearCart,
   } = useCart();
-
-  useEffect(() => {
-    if (!isOpen) {
-      return;
-    }
-
-    const previousActiveElement = document.activeElement as HTMLElement | null;
-
-    const previousOverflow = document.body.style.overflow;
-
-    document.body.style.overflow = "hidden";
-
-    closeButtonRef.current?.focus();
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-        return;
-      }
-
-      if (event.key !== "Tab") {
-        return;
-      }
-
-      const panel = panelRef.current;
-
-      if (!panel) {
-        return;
-      }
-
-      const focusableElements = panel.querySelectorAll<HTMLElement>(
-        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-      );
-
-      if (focusableElements.length === 0) {
-        event.preventDefault();
-        return;
-      }
-
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-        return;
-      }
-
-      if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-
-      document.removeEventListener("keydown", handleKeyDown);
-
-      previousActiveElement?.focus();
-    };
-  }, [isOpen, onClose]);
 
   const totalItems = items.reduce((total, item) => total + item.quantity, 0);
 
@@ -107,14 +47,11 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
 
   const handleCheckout = () => {
     const result = validateCart(items);
-
     setValidationErrors(result.errors);
-
     if (!result.valid) {
       console.error("Cart validation failed", result.errors);
       return;
     }
-
     onCheckout?.(items);
   };
 
@@ -139,39 +76,24 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
   };
 
   return (
-    <div className="cart-drawer">
-      <div
-        className="cart-drawer__backdrop"
-        onClick={onClose}
-        aria-hidden="true"
-        role="presentation"
-      />
-      <aside
-        ref={panelRef}
-        className="cart-drawer__panel"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="cart-drawer-title"
-      >
-        <div className="cart-drawer__header">
-          <div>
-            <h2 id="cart-drawer-title" className="cart-drawer__title">
-              Cart
-            </h2>
-            <span className="cart__count">
-              {totalItems} {totalItems === 1 ? "item" : "items"}
-            </span>
-          </div>
-          <Button
-            ref={closeButtonRef}
-            type="button"
-            variant="secondary"
-            onClick={onClose}
-            aria-label="Close cart"
-          >
-            <X size={16} aria-hidden="true" />
-          </Button>
+    <Drawer open={isOpen} onClose={onClose}>
+      <DrawerHeader>
+        <div>
+          <DrawerTitle>Cart</DrawerTitle>
+          <span className="cart__count">
+            {totalItems} {totalItems === 1 ? "item" : "items"}
+          </span>
         </div>
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={onClose}
+          aria-label="Close cart"
+        >
+          <X size={16} aria-hidden="true" />
+        </Button>
+      </DrawerHeader>
+      <DrawerContent>
         <div className="cart__items">
           {items.length === 0 ? (
             <p className="cart__empty">Your cart is empty.</p>
@@ -213,7 +135,9 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
             ))
           )}
         </div>
-        {items.length > 0 && (
+      </DrawerContent>
+      {items.length > 0 && (
+        <DrawerFooter>
           <div className="cart__footer">
             <div className="cart__total">
               <strong>Total</strong>
@@ -244,9 +168,9 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
               </Button>
             </div>
           </div>
-        )}
-      </aside>
-    </div>
+        </DrawerFooter>
+      )}
+    </Drawer>
   );
 }
 

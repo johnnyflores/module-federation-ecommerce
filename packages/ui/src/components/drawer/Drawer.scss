@@ -1,0 +1,66 @@
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgb(0 0 0 / 40%);
+    animation: drawer-backdrop-in 200ms ease-out;
+  }
+  &__panel {
+    background: var(--color-surface-primary);
+    box-shadow: -8px 0 24px rgb(0 0 0 / 12%);
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: min(420px, 100%);
+    height: 100%;
+    padding: 24px;
+    animation: drawer-slide-in 300ms ease-out;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  &__title {
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+@keyframes drawer-backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drawer-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer__panel,
+  .drawer__backdrop {
+    animation: none;
+  }
+}
