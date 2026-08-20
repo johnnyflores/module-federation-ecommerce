@@ -1,6 +1,7 @@
 import { Button } from "@ecommerce/ui";
 import type { Order } from "@/types/order";
 import "./OrderConfirmation.scss";
+import { Check } from "lucide-react";
 
 type OrderConfirmationProps = {
   order: Order;
@@ -18,7 +19,7 @@ function OrderConfirmation({
         aria-labelledby="order-confirmation-title"
       >
         <div className="order-confirmation__success" aria-hidden="true">
-          ✓
+          <Check size={48} />
         </div>
         <h1 id="order-confirmation-title">Order confirmed!</h1>
         <p>Thank you for your purchase.</p>
