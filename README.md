@@ -61,8 +61,12 @@ module-federation-ecommerce/
 │   ├── shared/
 │   │   ├── src/
 │   │   │   └── events/
-│   │   │       ├── cart.ts
-│   │   │       └── cartValidation.ts
+│   │   │   │    ├── cart.ts
+│   │   │   └── types/
+│   │   │   │    ├── cart.ts
+│   │   │   │    └── product.ts
+│   │   │   └── validation/
+│   │   │   │    ├── cart.ts
 │   │   └── package.json
 │   │
 │   └── ui/
