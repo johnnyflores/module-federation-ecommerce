@@ -1,6 +1,7 @@
 import type { CheckoutData } from "@/types/checkout";
-import { Button } from "@ecommerce/ui";
+import { Button, Typography } from "@ecommerce/ui";
 import "./Checkout.scss";
+import { ArrowLeft } from "lucide-react";
 
 type CheckoutProps = {
   checkout: CheckoutData;
@@ -23,30 +24,35 @@ function Checkout({
   return (
     <main className="checkout">
       <div className="checkout__header">
-        <Button type="button" variant="secondary" onClick={onBack}>
-          ← Back to cart
+        <Button
+          type="button"
+          variant="secondary"
+          onClick={onBack}
+          className="checkout__back"
+        >
+          <ArrowLeft size={16} aria-hidden="true" />
+          <Typography as="span">Back to cart</Typography>
         </Button>
-        <h1 className="checkout__title">Checkout</h1>
+        <Typography as="h1">Checkout</Typography>
       </div>
       <section
         className="checkout__summary"
         aria-labelledby="checkout-summary-title"
       >
-        <h2 id="checkout-summary-title">Order summary</h2>
-        <p className="checkout__count">
+        <Typography as="h2" id="checkout-summary-title">
+          Order summary
+        </Typography>
+        <Typography as="p" className="checkout__count">
           {totalItems} {totalItems === 1 ? "item" : "items"}
-        </p>
+        </Typography>
         <div className="checkout__items">
           {checkout.items.map((item) => (
             <article className="checkout__item" key={item.product.id}>
               <div className="checkout__item-image">{item.product.emoji}</div>
-
               <div className="checkout__item-content">
                 <strong>{item.product.name}</strong>
-
-                <span>Quantity: {item.quantity}</span>
+                <Typography as="span">Quantity: {item.quantity}</Typography>
               </div>
-
               <strong>
                 ${(item.product.price * item.quantity).toFixed(2)}
               </strong>

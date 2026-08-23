@@ -13,6 +13,7 @@ import {
   DrawerTitle,
   DrawerContent,
   DrawerFooter,
+  Typography,
 } from "@ecommerce/ui";
 import "./Cart.scss";
 
@@ -80,9 +81,9 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
       <DrawerHeader>
         <div>
           <DrawerTitle>Cart</DrawerTitle>
-          <span className="cart__count">
+          <Typography as="span" className="cart__count">
             {totalItems} {totalItems === 1 ? "item" : "items"}
-          </span>
+          </Typography>
         </div>
         <Button
           type="button"
@@ -96,14 +97,18 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
       <DrawerContent>
         <div className="cart__items">
           {items.length === 0 ? (
-            <p className="cart__empty">Your cart is empty.</p>
+            <Typography as="p" className="cart__empty">
+              Your cart is empty.
+            </Typography>
           ) : (
             items.map((item) => (
               <div className="cart__item" key={item.product.id}>
                 <div className="cart__item-image">{item.product.emoji}</div>
                 <div className="cart__item-content">
                   <strong>{item.product.name}</strong>
-                  <span>${item.product.price.toFixed(2)}</span>
+                  <Typography as="span">
+                    ${item.product.price.toFixed(2)}
+                  </Typography>
                   <div className="cart__quantity">
                     <Button
                       type="button"
@@ -113,7 +118,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
                     >
                       <Minus size={16} aria-hidden="true" />
                     </Button>
-                    <span>{item.quantity}</span>
+                    <Typography as="span">{item.quantity}</Typography>
                     <Button
                       type="button"
                       variant="secondary"
