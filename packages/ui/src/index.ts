@@ -21,3 +21,6 @@ export type { BadgeProps } from "./components/badge/Badge";
 
 export { ThemeProvider, useTheme } from "./theme";
 export type { Theme } from "./theme";
+
+export { Typography } from "./components/typography/Typography";
+export type { TypographyProps } from "./components/typography/Typography";
