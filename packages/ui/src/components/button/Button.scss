@@ -31,4 +31,11 @@
       background: var(--component-button-background-danger-hover);
     }
   }
+  &--ghost {
+    background: var(--component-button-background-ghost);
+    color: var(--component-button-text-ghost);
+    &:hover {
+      background: var(--component-button-background-ghost-hover);
+    }
+  }
 }
