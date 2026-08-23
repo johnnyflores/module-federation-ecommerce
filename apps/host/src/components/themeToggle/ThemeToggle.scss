@@ -1,0 +1,13 @@
+.theme-toggle {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--spacing-10);
+  height: var(--spacing-10);
+  &:hover {
+    background: var(--color-background-muted);
+  }
+}

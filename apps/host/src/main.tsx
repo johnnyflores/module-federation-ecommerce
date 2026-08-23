@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { ThemeProvider } from "@ecommerce/ui";
 import { CartProvider } from "./context/CartContext.tsx";
-import "@ecommerce/ui/src/tokens.scss";
+import App from "./App.tsx";
+import "@ecommerce/ui/src/global.scss";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
+    <ThemeProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </ThemeProvider>
   </StrictMode>,
 );

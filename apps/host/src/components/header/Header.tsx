@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/themeToggle/ThemeToggle";
 import CartBadge from "@/components/cart/CartBadge";
 import "./Header.scss";
 
@@ -11,6 +12,7 @@ function Header({ onCartClick }: HeaderProps) {
       <div className="header__content">
         <h1 className="header__title">E-commerce Host</h1>
         <CartBadge onClick={onCartClick} />
+        <ThemeToggle />
       </div>
     </header>
   );

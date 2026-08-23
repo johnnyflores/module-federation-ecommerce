@@ -18,3 +18,6 @@ export type { DrawerFooterProps } from "./components/drawer/DrawerFooter";
 
 export { Badge } from "./components/badge/Badge";
 export type { BadgeProps } from "./components/badge/Badge";
+
+export { ThemeProvider, useTheme } from "./theme";
+export type { Theme } from "./theme";
