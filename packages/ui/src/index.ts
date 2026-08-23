@@ -24,3 +24,6 @@ export type { Theme } from "./theme";
 
 export { Typography } from "./components/typography/Typography";
 export type { TypographyProps } from "./components/typography/Typography";
+
+export { Header } from "./components/header/Header";
+export type { HeaderProps } from "./components/header/Header";

@@ -1,7 +1,7 @@
 import { ThemeToggle } from "@/components/themeToggle/ThemeToggle";
 import CartBadge from "@/components/cart/CartBadge";
+import { Typography, Header as UIHeader } from "@ecommerce/ui";
 import "./Header.scss";
-import { Typography } from "@ecommerce/ui";
 
 type HeaderProps = {
   onCartClick: () => void;
@@ -9,15 +9,13 @@ type HeaderProps = {
 
 function Header({ onCartClick }: HeaderProps) {
   return (
-    <header className="header">
-      <div className="header__content">
-        <Typography as="h1" className="header__title">
-          E-commerce Host
-        </Typography>
-        <CartBadge onClick={onCartClick} />
-        <ThemeToggle />
-      </div>
-    </header>
+    <UIHeader className="header">
+      <Typography as="h1" className="header__title">
+        E-commerce Host
+      </Typography>
+      <CartBadge onClick={onCartClick} />
+      <ThemeToggle />
+    </UIHeader>
   );
 }
 
