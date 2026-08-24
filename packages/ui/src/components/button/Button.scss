@@ -38,4 +38,20 @@
       background: var(--component-button-background-ghost-hover);
     }
   }
+  &--link {
+    background: var(--component-button-background-link);
+    color: var(--component-button-text-link);
+    text-decoration: none;
+    &:hover {
+      background: var(--component-button-background-link-hover);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--color-action-primary);
+      outline-offset: 2px;
+    }
+    &.is-active {
+      background: var(--component-button-background-link-active);
+      color: var(--component-button-text-link-active);
+    }
+  }
 }

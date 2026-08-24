@@ -17,6 +17,17 @@
   --component-button-background-danger-hover: var(--color-action-danger-hover);
   --component-button-text-danger: var(--color-text-on-danger);
 
+  --component-button-background-ghost: var(--color-surface-primary);
+  --component-button-background-ghost-hover: var(--color-surface-secondary);
+  --component-button-text-ghost: var(--color-text-primary);
+
+  // --component-button-background-link: var(--color-surface-primary);
+  --component-button-background-link: transparent;
+  --component-button-background-link-hover: var(--color-surface-secondary);
+  --component-button-background-link-active: var(--color-surface-secondary);
+  --component-button-text-link: var(--color-text-primary);
+  --component-button-text-link-active: var(--color-text-primary);
+
   /* Button layout */
   --component-button-padding-y: var(--spacing-3);
   --component-button-padding-x: var(--spacing-4);
