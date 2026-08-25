@@ -1,7 +1,15 @@
 import type { Product } from "@ecommerce/shared";
-import { Button } from "@ecommerce/ui";
+import {
+  Button,
+  Card as UICard,
+  CardHeader as UICardHeader,
+  CardTitle as UICardTitle,
+  CardDescription as UICardDescription,
+  CardContent as UICardContent,
+  CardAction as UICardAction,
+  CardImage as UICardImage,
+} from "@ecommerce/ui";
 import { CART_ADD_EVENT, type CartAddEventDetail } from "@ecommerce/shared";
-import "./Card.scss";
 
 type CardProps = {
   product: Product;
@@ -20,23 +28,21 @@ function Card({ product }: CardProps) {
     );
   }
   return (
-    <article className="card">
-      <div className="card__image">{product.emoji}</div>
-      <div className="card__content">
-        <span className="card__category">{product.category}</span>
-        <h2 className="card__name">{product.name}</h2>
-        <strong className="card__price">
-          ${product.price.toLocaleString()}
-        </strong>
-        <Button
-          type="button"
-          className="card__button"
-          onClick={handleAddToCart}
-        >
+    <UICard>
+      <UICardImage>{product.emoji}</UICardImage>
+      <UICardHeader>
+        <UICardTitle>{product.name}</UICardTitle>
+        <UICardDescription>{product.category}</UICardDescription>
+      </UICardHeader>
+      <UICardContent>
+        <strong>${product.price.toLocaleString()}</strong>
+      </UICardContent>
+      <UICardAction>
+        <Button type="button" onClick={handleAddToCart}>
           Add to cart
         </Button>
-      </div>
-    </article>
+      </UICardAction>
+    </UICard>
   );
 }
 
