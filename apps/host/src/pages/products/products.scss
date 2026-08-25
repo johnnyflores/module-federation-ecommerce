@@ -1,0 +1,14 @@
+.products-page {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-4);
+    & > a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+    }
+  }
+}

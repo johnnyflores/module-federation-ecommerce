@@ -1,5 +1,10 @@
 .header {
-  &__title {
+  &__logo {
     flex: 1;
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
   }
 }
