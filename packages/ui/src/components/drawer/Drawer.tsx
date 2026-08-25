@@ -6,9 +6,15 @@ export type DrawerProps = {
   open: boolean;
   onClose: () => void;
   children: ReactNode;
+  className?: string;
 };
 
-export function Drawer({ open, onClose, children }: DrawerProps) {
+export function Drawer({
+  open,
+  onClose,
+  children,
+  className = "",
+}: DrawerProps) {
   const titleId = useId();
   const panelRef = useRef<HTMLElement | null>(null);
 
@@ -82,7 +88,7 @@ export function Drawer({ open, onClose, children }: DrawerProps) {
 
   return (
     <DrawerContext.Provider value={{ titleId }}>
-      <div className="drawer">
+      <div className={`drawer ${className}`}>
         <div
           className="drawer__backdrop"
           onClick={onClose}
