@@ -14,6 +14,7 @@ import {
   DrawerContent,
   DrawerFooter,
   Typography,
+  Separator,
 } from "@ecommerce/ui";
 import "./Cart.scss";
 
@@ -141,6 +142,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
           )}
         </div>
       </DrawerContent>
+      <Separator />
       {items.length > 0 && (
         <DrawerFooter>
           <div className="cart__footer">
