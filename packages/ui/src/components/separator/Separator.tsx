@@ -12,7 +12,7 @@ export function Separator({
     <SeparatorPrimitive
       orientation={orientation}
       decorative={decorative}
-      className={`separator ${orientation} ${className}`}
+      className={`separator ${className}`}
       {...props}
     />
   );

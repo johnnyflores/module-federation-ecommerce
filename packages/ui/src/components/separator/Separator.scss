@@ -2,11 +2,11 @@
   border: none;
   background-color: var(--color-border-primary);
   flex-shrink: 0;
-  &.horizontal {
+  &[data-orientation="horizontal"] {
     height: 1px;
     width: 100%;
   }
-  &.vertical {
+  &[data-orientation="vertical"] {
     width: 1px;
     height: 100%;
   }
