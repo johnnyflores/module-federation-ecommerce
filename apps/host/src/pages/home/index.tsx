@@ -8,6 +8,7 @@ import type { Order } from "@/types/order";
 import OrderConfirmation from "@/components/order-confirmation/OrderConfirmation";
 import { createOrder } from "@/services/order/orderService";
 import { useCart } from "@/context/useCart";
+import { Loading } from "@ecommerce/ui";
 
 const Products = lazy(() => import("products/Products"));
 
@@ -74,7 +75,7 @@ const HomePage = () => {
       );
     }
     return (
-      <Suspense fallback={<p>Loading Products...</p>}>
+      <Suspense fallback={<Loading fullscreen label="Loading ..." />}>
         <Products />
       </Suspense>
     );

@@ -5,4 +5,6 @@ export * from "./components/header";
 export * from "./components/typography";
 export * from "./components/card";
 export * from "./components/separator";
+export * from "./components/loading";
 export * from "./theme";
+export * from "./utils";
