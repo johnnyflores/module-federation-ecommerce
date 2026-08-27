@@ -10,7 +10,7 @@ export type DrawerTitleProps = {
 export function DrawerTitle({ children, className }: DrawerTitleProps) {
   const { titleId } = useDrawerContext();
   return (
-    <h2 id={titleId} className={cn("drawer__title", className)}>
+    <h2 id={titleId} className={cn("ui-drawer__title", className)}>
       {children}
     </h2>
   );

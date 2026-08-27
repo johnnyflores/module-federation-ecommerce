@@ -7,5 +7,5 @@ export type DrawerContentProps = {
 };
 
 export function DrawerContent({ children, className }: DrawerContentProps) {
-  return <div className={cn("drawer__content", className)}>{children}</div>;
+  return <div className={cn("ui-drawer__content", className)}>{children}</div>;
 }

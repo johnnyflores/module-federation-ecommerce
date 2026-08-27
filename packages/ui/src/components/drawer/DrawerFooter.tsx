@@ -7,5 +7,5 @@ export type DrawerFooterProps = {
 };
 
 export function DrawerFooter({ children, className }: DrawerFooterProps) {
-  return <div className={cn("drawer__footer", className)}>{children}</div>;
+  return <div className={cn("ui-drawer__footer", className)}>{children}</div>;
 }

@@ -13,7 +13,7 @@ export function Separator({
     <SeparatorPrimitive
       orientation={orientation}
       decorative={decorative}
-      className={cn("separator", className)}
+      className={cn("ui-separator", className)}
       {...props}
     />
   );

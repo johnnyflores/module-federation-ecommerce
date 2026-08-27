@@ -10,10 +10,10 @@ export type BadgeProps = {
 
 export function Badge({ content, children, className }: BadgeProps) {
   return (
-    <span className={cn("badge", className)}>
+    <span className={cn("ui-badge", className)}>
       {children}
       {content !== undefined && content !== null && (
-        <span className="badge__content" aria-hidden="true">
+        <span className="ui-badge__content" aria-hidden="true">
           {content}
         </span>
       )}

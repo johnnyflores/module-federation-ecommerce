@@ -7,5 +7,5 @@ export type DrawerHeaderProps = {
 };
 
 export function DrawerHeader({ children, className }: DrawerHeaderProps) {
-  return <div className={cn("drawer__header", className)}>{children}</div>;
+  return <div className={cn("ui-drawer__header", className)}>{children}</div>;
 }

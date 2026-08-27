@@ -84,16 +84,16 @@ export function Drawer({ open, onClose, children, className }: DrawerProps) {
 
   return (
     <DrawerContext.Provider value={{ titleId }}>
-      <div className={cn("drawer", className)}>
+      <div className={cn("ui-drawer", className)}>
         <div
-          className="drawer__backdrop"
+          className="ui-drawer__backdrop"
           onClick={onClose}
           aria-hidden="true"
           role="presentation"
         />
         <aside
           ref={panelRef}
-          className="drawer__panel"
+          className="ui-drawer__panel"
           role="dialog"
           aria-modal="true"
           aria-labelledby={titleId}
