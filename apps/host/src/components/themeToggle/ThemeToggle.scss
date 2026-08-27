@@ -1,0 +1,42 @@
+.theme-toggle {
+  &__icon {
+    position: relative;
+    display: inline-flex;
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+  }
+  &__sun,
+  &__moon {
+    position: absolute;
+    inset: 0;
+    transition:
+      opacity 300ms ease,
+      transform 400ms ease;
+  }
+
+  &__sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+    &--active {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+  &__moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+    &--active {
+      opacity: 1;
+      transform: rotate(0deg) scale(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    &__sun,
+    &__moon {
+      transition: none;
+    }
+  }
+}

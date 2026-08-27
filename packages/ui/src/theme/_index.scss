@@ -3,14 +3,9 @@
 
 :root {
   color-scheme: light;
-}
-
-[data-theme="dark"] {
-  color-scheme: dark;
-}
-
-:root {
-  color-scheme: light;
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 [data-theme="dark"] {

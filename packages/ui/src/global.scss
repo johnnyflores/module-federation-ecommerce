@@ -18,6 +18,9 @@ body {
   font-family: var(--font-family-base);
   color: var(--color-text);
   background: var(--color-surface-primary);
+  transition:
+    background-color 300ms ease,
+    color 300ms ease;
 }
 
 h1,
