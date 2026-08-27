@@ -1,5 +1,6 @@
 import { useId, useRef, type ReactNode, useEffect } from "react";
 import { DrawerContext } from "./DrawerContext";
+import { cn } from "../../utils";
 import "./Drawer.scss";
 
 export type DrawerProps = {
@@ -9,12 +10,7 @@ export type DrawerProps = {
   className?: string;
 };
 
-export function Drawer({
-  open,
-  onClose,
-  children,
-  className = "",
-}: DrawerProps) {
+export function Drawer({ open, onClose, children, className }: DrawerProps) {
   const titleId = useId();
   const panelRef = useRef<HTMLElement | null>(null);
 
@@ -88,7 +84,7 @@ export function Drawer({
 
   return (
     <DrawerContext.Provider value={{ titleId }}>
-      <div className={`drawer ${className}`}>
+      <div className={cn("drawer", className)}>
         <div
           className="drawer__backdrop"
           onClick={onClose}

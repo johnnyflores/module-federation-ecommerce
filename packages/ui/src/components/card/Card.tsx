@@ -1,58 +1,56 @@
 import * as React from "react";
+import { cn } from "../../utils";
 import "./Card.scss";
 
-export function Card({
-  className = "",
-  ...props
-}: React.ComponentProps<"div">) {
-  return <div className={`card ${className}`} {...props} />;
+export function Card({ className, ...props }: React.ComponentProps<"div">) {
+  return <div className={cn("card", className)} {...props} />;
 }
 
 export function CardHeader({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__header ${className}`} {...props} />;
+  return <div className={cn("card__header", className)} {...props} />;
 }
 
 export function CardTitle({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__title ${className}`} {...props} />;
+  return <div className={cn("card__title", className)} {...props} />;
 }
 
 export function CardDescription({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__description ${className}`} {...props} />;
+  return <div className={cn("card__description", className)} {...props} />;
 }
 
 export function CardImage({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__image ${className}`} {...props} />;
+  return <div className={cn("card__image", className)} {...props} />;
 }
 
 export function CardAction({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__action ${className}`} {...props} />;
+  return <div className={cn("card__action", className)} {...props} />;
 }
 
 export function CardContent({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__content ${className}`} {...props} />;
+  return <div className={cn("card__content", className)} {...props} />;
 }
 
 export function CardFooter({
-  className = "",
+  className,
   ...props
 }: React.ComponentProps<"div">) {
-  return <div className={`card__footer ${className}`} {...props} />;
+  return <div className={cn("card__footer", className)} {...props} />;
 }

@@ -1,9 +1,10 @@
 import React from "react";
 import { Separator as SeparatorPrimitive } from "@radix-ui/react-separator";
+import { cn } from "../../utils";
 import "./Separator.scss";
 
 export function Separator({
-  className = "",
+  className,
   orientation = "horizontal",
   decorative = true,
   ...props
@@ -12,7 +13,7 @@ export function Separator({
     <SeparatorPrimitive
       orientation={orientation}
       decorative={decorative}
-      className={`separator ${className}`}
+      className={cn("separator", className)}
       {...props}
     />
   );
