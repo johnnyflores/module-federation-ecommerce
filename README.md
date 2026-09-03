@@ -4,6 +4,14 @@ A small e-commerce application built with React, TypeScript, Vite, and Module Fe
 
 The project demonstrates how to structure a micro-frontend application while keeping shared UI, state, validation, and business responsibilities separated.
 
+## Demo
+
+[Live Demo](https://module-federation-ecommerce-host-theta.vercel.app/)
+
+<p align="center">
+  <img src="./apps/host/public/host-ecommerce.png" alt="MF E-commerce" width="900"/>
+</p>
+
 ## Features
 
 - React 19

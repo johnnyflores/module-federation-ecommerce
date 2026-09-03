@@ -17,7 +17,7 @@ function Logo(props: LogoProps) {
         variant="body-sm"
         className="logo__text hidden md:inline"
       >
-        E-Commerce
+        MF E-Commerce
       </Typography>
     </Link>
   );
