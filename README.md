@@ -9,7 +9,13 @@ The project demonstrates how to structure a micro-frontend application while kee
 [Live Demo](https://module-federation-ecommerce-host-theta.vercel.app/)
 
 <p align="center">
-  <img src="./apps/host/public/host-ecommerce.png" alt="MF E-commerce" width="900"/>
+  <a href="https://module-federation-ecommerce-host-theta.vercel.app/">
+    <img
+      src="./apps/host/public/host-ecommerce.png"
+      alt="MF E-commerce"
+      width="900"
+    />
+  </a>
 </p>
 
 ## Features
