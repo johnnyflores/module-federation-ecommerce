@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ecommerce/shared": "0.0.0",
     "@ecommerce/ui": "0.0.0",
     "@originjs/vite-plugin-federation": "^1.4.1",
     "react": "^19.2.8",
