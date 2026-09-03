@@ -1,10 +1,45 @@
 .header {
+  .ui-header__content {
+    justify-content: space-between;
+    .ui-drawer__header {
+      justify-content: flex-end;
+    }
+  }
   &__logo {
-    flex: 1;
+    flex-shrink: 0;
   }
   &__nav {
     display: flex;
     align-items: center;
     gap: var(--spacing-3);
+  }
+  &__links {
+    display: block;
+  }
+  &__menu-button {
+    display: none;
+  }
+  &__mobile-menu {
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-2);
+      a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    &__links {
+      display: none;
+    }
+    &__menu-button {
+      display: flex;
+    }
+    &__nav {
+      gap: var(--spacing-2);
+    }
   }
 }

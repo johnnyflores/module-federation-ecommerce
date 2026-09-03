@@ -54,6 +54,7 @@ function Cart({ isOpen, onClose, onCheckout }: CartProps) {
       console.error("Cart validation failed", result.errors);
       return;
     }
+    onClose();
     onCheckout?.(items);
   };
 
