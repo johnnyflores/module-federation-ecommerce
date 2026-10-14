@@ -2,8 +2,6 @@
   .ui-header__content {
     & > a {
       text-decoration: none;
-      display: flex;
-      align-items: center;
       gap: var(--spacing-2);
     }
   }
